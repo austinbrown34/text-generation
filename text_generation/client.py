@@ -464,7 +464,8 @@ class AsyncClient:
         request = Request(inputs=prompt, stream=True, parameters=parameters)
 
         async with ClientSession(
-            headers=self.headers, cookies=self.cookies, timeout=self.timeout
+            headers=self.headers, cookies=self.cookies, timeout=self.timeout,
+            connector=TCPConnector(verify_ssl=False)
         ) as session:
             async with session.post(self.base_url, json=request.dict()) as resp:
 
