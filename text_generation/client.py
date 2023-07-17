@@ -388,7 +388,7 @@ class AsyncClient:
 
                 if resp.status != 200:
                     raise parse_error(resp.status, payload)
-                return Response(**payload[0])
+                return Response(**payload)
 
     async def generate_stream(
         self,
